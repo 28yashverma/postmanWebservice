@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,7 +38,7 @@ public class HomeController {
 	}
 
 	@GetMapping("/demo/{id}")
-	public Demo getDemo(@PathParam(value = "id") Integer id) {
+	public Demo getDemo(@PathVariable(value = "id") Integer id) {
 		return demoService.getDemo(id);
 	}
 
@@ -52,8 +53,8 @@ public class HomeController {
 	}
 
 	@DeleteMapping("/demo/delete")
-	void deleteDemo(Demo demo) {
-		demoService.deleteDemo(demo);
+	public String deleteDemo(Integer id) {
+		return demoService.deleteDemo(id);
 	}
 
 }

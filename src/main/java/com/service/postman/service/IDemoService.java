@@ -14,7 +14,7 @@ public interface IDemoService {
 
 	Demo updateDemo(Demo demo);
 
-	void deleteDemo(Demo demo);
+	String deleteDemo(Integer id);
 
 	Demo patchDemo(Demo demo);
 

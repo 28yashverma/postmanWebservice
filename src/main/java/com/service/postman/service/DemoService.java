@@ -58,21 +58,21 @@ public class DemoService implements IDemoService {
 	}
 
 	@Override
-	public void deleteDemo(Demo d) {
+	public String deleteDemo(Integer id) {
 
-		if (d == null) {
-			throw new IllegalArgumentException("Demo object is null ");
+		if (id == null) {
+			throw new IllegalArgumentException("Id is null ");
 		}
-
-		Integer id = d.getId();
 
 		Demo demo = demoRepo.findById(id).get();
 
 		if (demo == null) {
-			throw new IllegalArgumentException("Cannot delete");
+			throw new IllegalArgumentException("Cannot delete:: No such object present");
 		}
 
 		demoRepo.delete(demo);
+
+		return "Deleted successfully";
 	}
 
 	@Override
