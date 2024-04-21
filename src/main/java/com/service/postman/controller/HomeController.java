@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.service.postman.pojo.Demo;
 import com.service.postman.service.IDemoService;
 
-import jakarta.websocket.server.PathParam;
-
 @RestController
 @RequestMapping("/v1")
 public class HomeController {
@@ -52,8 +50,8 @@ public class HomeController {
 		return demoService.updateDemo(demo);
 	}
 
-	@DeleteMapping("/demo/delete")
-	public String deleteDemo(Integer id) {
+	@DeleteMapping("/demo/delete/{id}")
+	public String deleteDemo(@PathVariable(value = "id") Integer id) {
 		return demoService.deleteDemo(id);
 	}
 
